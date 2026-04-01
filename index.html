@@ -593,29 +593,21 @@ document.addEventListener("DOMContentLoaded", function () {
   <script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js" type="text/javascript"></script>
 <script>
-// Disable Webflow form handling
-window.Webflow = window.Webflow || [];
-
 document.addEventListener('DOMContentLoaded', function() {
   var form = document.querySelector('form');
   if (!form) return;
-
-  // Remove Webflow's data attributes to prevent its handling
   form.removeAttribute('data-wf-page-id');
   form.removeAttribute('data-wf-element-id');
-
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
-
     var data = {
-      meno: document.getElementById('name-10').value,
-      email: document.getElementById('email-16').value,
-      telefon: document.getElementById('phone-number-4').value,
-      sprava: document.getElementById('message-17').value,
-      typ: (document.querySelector('input[name="radio"]:checked') || {}).id || ''
+      Name: document.getElementById('name-10').value,
+      Email: document.getElementById('email-16').value,
+      Phone: document.getElementById('phone-number-4').value,
+      Message: document.getElementById('message-17').value,
+      Position: (document.querySelector('input[name="radio"]:checked') || {}).id || 'Nezadané'
     };
-
     fetch('https://hook.eu1.make.com/lduc9392a8nj37rsk1oet65phqy4bky7', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -626,7 +618,7 @@ document.addEventListener('DOMContentLoaded', function() {
       form.reset();
     })
     .catch(function() {
-      alert('Správa bola odoslaná.');
+      alert('Chyba pri odosielaní. Skúste znova.');
     });
   }, true);
 });
