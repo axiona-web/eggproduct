@@ -10,7 +10,7 @@
   <meta content="Prezentácia Európskych vajíčkových produktov s dôrazom na kvalitu a profesionalitu." property="twitter:description">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="width=device-width, initial-scale=1" name="viewport"
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -592,5 +592,25 @@ document.addEventListener("DOMContentLoaded", function () {
   <script src="js/webflow.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
   <script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js" type="text/javascript"></script>
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const data = {
+    meno: document.getElementById('name-10').value,
+    email: document.getElementById('email-16').value,
+    telefon: document.getElementById('phone-number-4').value,
+    sprava: document.getElementById('message-17').value,
+    typ: document.querySelector('input[name="radio"]:checked')?.nextSibling?.textContent || ''
+  };
+  fetch('https://hook.eu1.make.com/lduc9392a8nj37rsk1oet65phqy4bky7', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  }).then(() => {
+    alert('Správa odoslaná! Ozveme sa vám čoskoro.');
+    this.reset();
+  }).catch(() => alert('Chyba pri odosielaní. Skúste znova.'));
+});
+</script>
 </body>
 </html>
