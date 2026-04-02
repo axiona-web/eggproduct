@@ -601,12 +601,13 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
+    var checked = document.querySelector('input[name="radio"]:checked');
     var data = {
       Name: document.getElementById('name-10').value,
       Email: document.getElementById('email-16').value,
       Phone: document.getElementById('phone-number-4').value,
       Message: document.getElementById('message-17').value,
-      Position: (document.querySelector('input[name="radio"]:checked') || {}).id || 'Nezadané'
+      Radio: checked ? checked.id : 'Nezadane'
     };
     fetch('https://hook.eu1.make.com/lduc9392a8nj37rsk1oet65phqy4bky7', {
       method: 'POST',
@@ -614,11 +615,11 @@ document.addEventListener('DOMContentLoaded', function() {
       body: JSON.stringify(data)
     })
     .then(function() {
-      alert('Správa bola úspešne odoslaná! Ozveme sa vám čoskoro.');
+      alert('Sprava bola uspesne odoslana! Ozveme sa vam coskoro.');
       form.reset();
     })
     .catch(function() {
-      alert('Chyba pri odosielaní. Skúste znova.');
+      alert('Chyba pri odosielani. Skuste znova.');
     });
   }, true);
 });
