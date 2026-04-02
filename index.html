@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
       Email: document.getElementById('email-16').value,
       Phone: document.getElementById('phone-number-4').value,
       Message: document.getElementById('message-17').value,
-      Position: (document.querySelector('input[name="radio"]:checked') || {}).id || 'Nezadané'
+      Radio: (document.querySelector('input[name="radio"]:checked') || {}).id || 'Nezadané'
     };
     fetch('https://hook.eu1.make.com/lduc9392a8nj37rsk1oet65phqy4bky7', {
       method: 'POST',
