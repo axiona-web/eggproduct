@@ -450,12 +450,12 @@ document.addEventListener("DOMContentLoaded", function () {
             <form method="POST" id="contact-form" class="form">
               <div class="form_item is-half">
                 <div class="form">
-                  <div class="form_item"><label for="name-10" class="input_label">Meno a priezvisko</label><input class="input_field w-input" maxlength="256" name="name-10" data-name="Name 10" placeholder="Your name" type="text" id="name-10"></div>
+                  <div class="form_item"><label for="name-10" class="input_label">Meno a priezvisko</label><input class="input_field w-input" maxlength="256" name="name-10" data-name="Name 10" placeholder="Your name" type="text" id="name-10" required=""></div>
                   <div class="form_item"><label for="email-16" class="input_label">Emailová adresa</label><input class="input_field w-input" maxlength="256" name="email-16" data-name="Email 16" placeholder="email@website.com" type="email" id="email-16" required=""></div>
-                  <div class="form_item"><label for="phone-number-4" class="input_label">Telefónne číslo</label><input class="input_field w-node-fd6ef367-865b-0f10-293e-cae54590df46-d1137ca2 w-input" maxlength="256" name="phone-number-4" data-name="Phone Number 4" placeholder="+421 901 234 567" type="tel" id="phone-number-4"></div>
+                  <div class="form_item"><label for="phone-number-4" class="input_label">Telefónne číslo</label><input class="input_field w-node-fd6ef367-865b-0f10-293e-cae54590df46-d1137ca2 w-input" maxlength="256" name="phone-number-4" data-name="Phone Number 4" placeholder="+421 901 234 567" type="tel" id="phone-number-4" required=""></div>
                 </div>
               </div>
-              <div id="w-node-_71074606-2743-8c18-6d01-6d20ec263dc1-04a459ab" class="form_item is-half w-node-fd6ef367-865b-0f10-293e-cae54590df4d-d1137ca2"><label for="message-17" class="input_label">Vaša správa</label><textarea id="message-17" name="message-17" maxlength="5000" data-name="Message 17" placeholder="Type your message..." class="input_field is-expand w-input"></textarea></div>
+              <div id="w-node-_71074606-2743-8c18-6d01-6d20ec263dc1-04a459ab" class="form_item is-half w-node-fd6ef367-865b-0f10-293e-cae54590df4d-d1137ca2"><label for="message-17" class="input_label">Vaša správa</label><textarea id="message-17" name="message-17" required="" maxlength="5000" data-name="Message 17" placeholder="Type your message..." class="input_field is-expand w-input"></textarea></div>
               <div id="w-node-f88b182d-803e-d214-eb09-8dd004a459d7-04a459ab" class="form_item w-node-fd6ef367-865b-0f10-293e-cae54590df61-d1137ca2"><label for="email-16" class="input_label margin-bottom_xsmall">Vyberte svoju pozíciu</label>
                 <div class="flex_horizontal gap-small is-wrap"><label class="radio w-radio">
                     <div class="w-form-formradioinput w-form-formradioinput--inputType-custom radio_toggle w-radio-input"></div><input type="radio" name="radio" id="Výrobca" data-name="Radio" style="opacity:0;position:absolute;z-index:-1" value="Výrobca"><span for="Výrobca" class="radio_label w-form-label">Výrobca</span>
@@ -601,6 +601,10 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     e.stopImmediatePropagation();
     var checked = document.querySelector('input[name="radio"]:checked');
+    if (!checked) {
+      alert('Prosim vyberte svoju poziciu (Vyrobca / Distributor / Odberatel / Ine).');
+      return;
+    }
     var data = {
       Name: document.getElementById('name-10').value,
       Email: document.getElementById('email-16').value,
