@@ -597,6 +597,15 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!form) return;
   form.removeAttribute('data-wf-page-id');
   form.removeAttribute('data-wf-element-id');
+  // Oprava vizuálneho stavu radio buttonov
+    document.querySelectorAll('input[name="radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('input[name="radio"]').forEach(function(r) {
+          r.previousElementSibling.classList.remove('w--redirected-checked');
+        });
+        radio.previousElementSibling.classList.add('w--redirected-checked');
+      });
+    });
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
